@@ -1,5 +1,7 @@
 package main;
 
+import task.Task;
+
 import java.util.Scanner;
 
 public class Tyler {
@@ -21,7 +23,7 @@ public class Tyler {
                 + separator);
 
         Scanner sc = new Scanner(System.in);
-        String[] tasks = new String[100];
+        Task[] tasks = new Task[100];
         int i = 0;
 
         while (true) {
@@ -33,13 +35,18 @@ public class Tyler {
                         break;
                     } else {
                         System.out.println("\t " + (j + 1)
-                                + ". " + tasks[j]);
+                                + ".[" + tasks[j].getStatusIcon()
+                                + "] " + tasks[j].getDescription());
                     }
                 }
             } else if (input.equals("bye")) {
                 break;
+            } else if (input.matches("mark\\s[0-9]+")) {
+                tasks[Integer.parseInt(input.split(" ")[1]) - 1].markAsDone();
+            } else if (input.matches("unmark\\s[0-9]+")) {
+                tasks[Integer.parseInt(input.split(" ")[1]) - 1].markAsUndone();
             } else {
-                tasks[i] = input;
+                tasks[i] = new Task(input);
                 i += 1;
                 System.out.println("\t added: " + input);
             }
