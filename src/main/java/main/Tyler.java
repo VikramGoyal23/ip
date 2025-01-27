@@ -21,12 +21,30 @@ public class Tyler {
                 + separator);
 
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        while (!input.equals("bye")) {
+        String[] tasks = new String[100];
+        int i = 0;
+
+        while (true) {
+            String input = sc.nextLine();
             System.out.print(separator);
-            System.out.print("\t " + input + "\n" + separator);
-            input = sc.nextLine();
+            if (input.equals("list")) {
+                for (int j = 0; j < 100; j++) {
+                    if (tasks[j] == null) {
+                        break;
+                    } else {
+                        System.out.println("\t " + (j + 1)
+                                + ". " + tasks[j]);
+                    }
+                }
+            } else if (input.equals("bye")) {
+                break;
+            } else {
+                tasks[i] = input;
+                i += 1;
+                System.out.println("\t added: " + input);
+            }
+            System.out.print(separator);
         }
-        System.out.println(separator + farewell + separator);
+        System.out.println(farewell + separator);
     }
 }
