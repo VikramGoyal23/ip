@@ -8,11 +8,15 @@ event doh /from
 deadline meh
 deadline moh /by
 mark 2
+mark 5
 list
 mark
 unmark 2
 bleh
 list
 unmark
+delete 3
+delete 3
 bloh
+list
 bye

@@ -6,6 +6,7 @@ import task.Task;
 import task.ToDo;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Tyler {
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class Tyler {
                 + separator);
 
         Scanner sc = new Scanner(System.in);
-        Task[] tasks = new Task[100];
+        ArrayList<Task> tasks = new ArrayList<>();
         int i = 0;
 
         loop: while (true) {
@@ -37,25 +38,26 @@ public class Tyler {
                 String command = tokens[0];
                 switch (command.toLowerCase()) {
                 case "list":
-                    for (int j = 0; j < 100; j++) {
-                        if (tasks[j] == null) {
-                            break;
-                        } else {
-                            System.out.println("\t " + (j + 1) + ". " + tasks[j]);
-                        }
+                    for (int j = 0; j < tasks.size(); j++) {
+                        System.out.println("\t " + (j + 1) + ". " + tasks.get(j));
                     }
                     break;
                 case "bye":
                     break loop;
                 case "mark":
-                    tasks[Integer.parseInt(tokens[1]) - 1].markAsDone();
+                    tasks.get(Integer.parseInt(tokens[1]) - 1).markAsDone();
                     break;
                 case "unmark":
-                    tasks[Integer.parseInt(tokens[1]) - 1].markAsUndone();
+                    tasks.get(Integer.parseInt(tokens[1]) - 1).markAsUndone();
+                    break;
+                case "delete":
+                    System.out.println("\t I've removed this task: \n"
+                            + "\t " + tasks.remove(Integer.parseInt(tokens[1]) - 1));
+                    System.out.println("\t There are " + tasks.size() + " tasks left in the list.");
                     break;
                 case "todo":
                     ToDo toDo = new ToDo(tokens[1]);
-                    i = Task.addToList(tasks, i, toDo);
+                    Task.addToList(tasks, toDo);
                     break;
                 case "deadline":
                     if (!tokens[1].contains("/by") || tokens[1].split("/by ")[1].isBlank()) {
@@ -63,7 +65,7 @@ public class Tyler {
                     }
                     Deadline deadline = new Deadline(
                             tokens[1].split(" /by")[0], tokens[1].split("/by ")[1]);
-                    i = Task.addToList(tasks, i, deadline);
+                    Task.addToList(tasks, deadline);
                     break;
                 case "event":
                     if (!tokens[1].contains("/from") || !tokens[1].contains("/to")
@@ -76,7 +78,7 @@ public class Tyler {
                     Event event = new Event(tokens[1].split(" /from")[0],
                             tokens[1].split("/from ")[1].split(" /to")[0],
                             tokens[1].split("/to ")[1]);
-                    i = Task.addToList(tasks, i, event);
+                    Task.addToList(tasks, event);
                     break;
                 default:
                     throw new IllegalArgumentException("\t !!I'm sorry, I don't know what that means!!");
@@ -85,10 +87,10 @@ public class Tyler {
                 System.out.println("\t !!Please enter a number as the argument!!");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-            } catch (NullPointerException e) {
-                System.out.println("\t !!There aren't this many tasks in the list!!");
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("\t !!Please provide the correct number of arguments!!");
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("\t !!There aren't this many tasks in the list!!");
             }
             System.out.print(separator);
         }

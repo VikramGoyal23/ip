@@ -1,5 +1,7 @@
 package task;
 
+import java.util.ArrayList;
+
 public class Task {
     //@@author VikramGoyal23-reused
     // Reused from https://nus-cs2103-ay2425s2.github.io/website/se-book-adapted/projectDuke/
@@ -66,15 +68,13 @@ public class Task {
      * @return Next task addition index.
      * @throws IllegalArgumentException If task description is blank.
      */
-    public static int addToList(Task[] tasks, int index, Task task) throws IllegalArgumentException {
+    public static void addToList(ArrayList<Task> tasks, Task task) throws IllegalArgumentException {
         if (task.getDescription().isBlank()) {
             throw new IllegalArgumentException("\t !!Please add a description for the task!!");
         }
-        tasks[index] = task;
-        index += 1;
+        tasks.add(task);
         System.out.println("\t I've added: \n\t\t" + task);
-        System.out.println("\t There's now " + index + " task(s) in the list.");
-        return index;
+        System.out.println("\t There's now " + tasks.size() + " task(s) in the list.");
     }
 
     @Override
