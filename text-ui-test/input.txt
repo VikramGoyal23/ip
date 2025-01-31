@@ -3,10 +3,16 @@ list
 deadline return book /by Sunday
 event project meeting /from Mon 2pm /to 4pm
 list
+todo
+event doh /from
+deadline meh
+deadline moh /by
 mark 2
 list
+mark
 unmark 2
 bleh
 list
+unmark
 bloh
 bye
