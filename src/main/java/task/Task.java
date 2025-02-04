@@ -54,8 +54,12 @@ public class Task {
      *
      * @return Task description.
      */
-    private String getDescription() {
+    public String getDescription() {
         return description;
+    }
+
+    public String getCategory() {
+        return "";
     }
 
     /**
@@ -63,9 +67,8 @@ public class Task {
      * Returns the index of the next position to add a task.
      *
      * @param tasks Array to which task must be added.
-     * @param index Position of task to be added.
      * @param task Task to be added.
-     * @return Next task addition index.
+     *
      * @throws IllegalArgumentException If task description is blank.
      */
     public static void addToList(ArrayList<Task> tasks, Task task) throws IllegalArgumentException {
@@ -79,6 +82,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return "[" + getStatusIcon() + "] " + getDescription();
+        return "[" + getCategory() + "]" + "[" + getStatusIcon() + "] " + getDescription();
     }
 }

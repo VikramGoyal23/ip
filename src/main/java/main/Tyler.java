@@ -5,11 +5,21 @@ import task.Event;
 import task.Task;
 import task.ToDo;
 
+import java.io.IOException;
+import java.io.FileWriter;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class Tyler {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
         String logo = "  _____      _           \n"
                 + " |_   _|   _| | ___ _ __ \n"
                 + "   | || | | | |/ _ \\ '__|\n"
@@ -23,12 +33,43 @@ public class Tyler {
         String greeting = "\t" + " Hello! I'm Tyler!\n"
                 + "\t" + " What can I do for you?\n";
         String farewell = "\t" + " Bye-bye now!\n";
-        System.out.print(separator + greeting
-                + separator);
+        System.out.print(separator + greeting + separator);
 
         Scanner sc = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
-        int i = 0;
+
+        String home = System.getProperty("user.dir");
+        Path dirPath = Paths.get(home, "data");
+        boolean hasDataDir = Files.exists(dirPath);
+        if (!hasDataDir) {
+            Files.createDirectories(dirPath);
+        }
+        Path tylerPath = Paths.get(home,"data", "tyler.txt");
+        boolean hasTylerFile = Files.exists(tylerPath);
+        if (!hasTylerFile) {
+            Files.createFile(tylerPath);
+        }
+
+        List<String> stored = Files.readAllLines(tylerPath);
+        for (String item: stored) {
+            List<String> itemTokens = Arrays.asList(item.split("\\|"));
+            itemTokens.replaceAll(String::strip);
+            boolean isNewAdded = false;
+            if (itemTokens.get(0).equals("T") && itemTokens.size() == 3) {
+                tasks.add(new ToDo(itemTokens.get(2)));
+                isNewAdded = true;
+
+            } else if (itemTokens.get(0).equals("D") && itemTokens.size() == 4) {
+                tasks.add(new Deadline(itemTokens.get(2), itemTokens.get(3)));
+                isNewAdded = true;
+            } else if (itemTokens.get(0).equals("E") && itemTokens.size() == 5) {
+                tasks.add(new Event(itemTokens.get(2), itemTokens.get(3), itemTokens.get(4)));
+                isNewAdded = true;
+            }
+            if (isNewAdded && itemTokens.get(1).equals("1")) {
+                tasks.get(tasks.size() - 1).markAsDone();
+            }
+        }
 
         loop: while (true) {
             try {
@@ -94,6 +135,25 @@ public class Tyler {
             }
             System.out.print(separator);
         }
+        List<String> formattedTasks = getFormattedTasks(tasks);
+        Files.write(tylerPath, formattedTasks);
         System.out.println(farewell + separator);
+    }
+
+    private static List<String> getFormattedTasks(ArrayList<Task> tasks) {
+        List<String> formattedTasks = new ArrayList<>();
+        for (Task t: tasks) {
+            int completed = t.getStatusIcon().equals("X") ? 1 : 0;
+            String formattedTask = t.getCategory() + "|" + completed + "|" + t.getDescription();
+            if (t.getCategory().equals("D")) {
+                Deadline d = (Deadline) t;
+                formattedTask = formattedTask + "|" + d.getBy();
+            } else if (t.getCategory().equals("E")) {
+                Event e = (Event) t;
+                formattedTask = formattedTask + "|" + e.getFrom() + "|" + e.getTo();
+            }
+            formattedTasks.add(formattedTask);
+        }
+        return formattedTasks;
     }
 }

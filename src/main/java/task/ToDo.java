@@ -10,8 +10,13 @@ public class ToDo extends Task {
     }
 
     @Override
+    public String getCategory() {
+        return "T";
+    }
+
+    @Override
     public String toString() {
-        return "[T]" + super.toString();
+        return super.toString();
     }
 
     //@@author

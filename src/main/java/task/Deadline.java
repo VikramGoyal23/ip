@@ -13,8 +13,17 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getCategory() {
+        return "D";
+    }
+
+    public String getBy() {
+        return by;
+    }
+
+    @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        return super.toString() + " (by: " + by + ")";
     }
 
     //@@author
