@@ -6,8 +6,8 @@ import task.Task;
 import task.ToDo;
 
 import java.io.IOException;
-import java.io.FileWriter;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import java.time.LocalDate;
 
 public class Tyler {
     public static void main(String[] args) throws IOException {
@@ -60,10 +62,11 @@ public class Tyler {
                 isNewAdded = true;
 
             } else if (itemTokens.get(0).equals("D") && itemTokens.size() == 4) {
-                tasks.add(new Deadline(itemTokens.get(2), itemTokens.get(3)));
+                tasks.add(new Deadline(itemTokens.get(2), LocalDateTime.parse(itemTokens.get(3))));
                 isNewAdded = true;
             } else if (itemTokens.get(0).equals("E") && itemTokens.size() == 5) {
-                tasks.add(new Event(itemTokens.get(2), itemTokens.get(3), itemTokens.get(4)));
+                tasks.add(new Event(itemTokens.get(2),
+                        LocalDateTime.parse(itemTokens.get(3)), LocalDateTime.parse(itemTokens.get(4))));
                 isNewAdded = true;
             }
             if (isNewAdded && itemTokens.get(1).equals("1")) {
@@ -85,6 +88,24 @@ public class Tyler {
                     break;
                 case "bye":
                     break loop;
+                case "date":
+                    LocalDate date = LocalDate.parse(tokens[1]);
+                    int i = 1;
+                    for (Task t : tasks) {
+                        if (t.getCategory().equals("D")) {
+                            if (((Deadline) t).getBy().toLocalDate().equals(date)) {
+                                System.out.println("\t " + (i) + ". " + t);
+                                i++;
+                            }
+                        } else if (t.getCategory().equals("E")) {
+                            if (((Event) t).getFrom().toLocalDate().equals(date)
+                                    || ((Event) t).getTo().toLocalDate().equals(date)) {
+                                System.out.println("\t " + (i) + ". " + t);
+                                i++;
+                            }
+                        }
+                    }
+                    break;
                 case "mark":
                     tasks.get(Integer.parseInt(tokens[1]) - 1).markAsDone();
                     break;
