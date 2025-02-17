@@ -1,4 +1,4 @@
 package main;
 
-public class TylerException {
+public class TylerException extends Throwable {
 }

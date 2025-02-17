@@ -1,7 +1,5 @@
 package task;
 
-import java.util.ArrayList;
-
 public class Task {
     //@@author VikramGoyal23-reused
     // Reused from https://nus-cs2103-ay2425s2.github.io/website/se-book-adapted/projectDuke/
@@ -60,24 +58,6 @@ public class Task {
 
     public String getCategory() {
         return "";
-    }
-
-    /**
-     * Adds task to array passed in as argument at specified index.
-     * Returns the index of the next position to add a task.
-     *
-     * @param tasks Array to which task must be added.
-     * @param task Task to be added.
-     *
-     * @throws IllegalArgumentException If task description is blank.
-     */
-    public static void addToList(ArrayList<Task> tasks, Task task) throws IllegalArgumentException {
-        if (task.getDescription().isBlank()) {
-            throw new IllegalArgumentException("\t !!Please add a description for the task!!");
-        }
-        tasks.add(task);
-        System.out.println("\t I've added: \n\t\t" + task);
-        System.out.println("\t There's now " + tasks.size() + " task(s) in the list.");
     }
 
     @Override

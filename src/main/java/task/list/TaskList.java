@@ -4,11 +4,15 @@ import task.Task;
 
 import java.util.ArrayList;
 
-public class TaskList extends ArrayList {
+public class TaskList extends ArrayList<Task> {
     private ArrayList<Task> tasks;
 
     public TaskList() {
-        this.tasks = new ArrayList<>();
+        this.addAll(new ArrayList<>());
+    }
+
+    public TaskList(TaskList tasks) {
+        this.addAll(tasks);
     }
 
     /**
@@ -23,8 +27,8 @@ public class TaskList extends ArrayList {
         if (task.getDescription().isBlank()) {
             throw new IllegalArgumentException("\t !!Please add a description for the task!!");
         }
-        tasks.add(task);
+        this.add(task);
         System.out.println("\t I've added: \n\t\t" + task);
-        System.out.println("\t There's now " + tasks.size() + " task(s) in the list.");
+        System.out.println("\t There's now " + this.size() + " task(s) in the list.");
     }
 }

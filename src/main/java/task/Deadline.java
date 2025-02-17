@@ -21,8 +21,7 @@ public class Deadline extends Task {
         LocalTime byTime;
         if (byDateAndTime.length == 1 || byDateAndTime[1].isBlank()) {
             byTime = LocalTime.NOON;
-        }
-        else {
+        } else {
             byTime = LocalTime.parse(byDateAndTime[1]);
         }
         this.by = LocalDateTime.of(byDate, byTime);

@@ -22,8 +22,7 @@ public class Event extends Task {
         LocalTime fromTime;
         if (fromDateAndTime.length == 1 || fromDateAndTime[1].isBlank()) {
             fromTime = LocalTime.NOON;
-        }
-        else {
+        } else {
             fromTime = LocalTime.parse(fromDateAndTime[1]);
         }
         this.from = LocalDateTime.of(fromDate, fromTime);
@@ -33,8 +32,7 @@ public class Event extends Task {
         LocalTime toTime;
         if (toDateAndTime.length == 1 || toDateAndTime[1].isBlank()) {
             toTime = LocalTime.NOON;
-        }
-        else {
+        } else {
             toTime = LocalTime.parse(toDateAndTime[1]);
         }
         this.to = LocalDateTime.of(toDate, toTime);
