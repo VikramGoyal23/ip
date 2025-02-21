@@ -1,13 +1,13 @@
-package parser;
+package tyler.parser;
 
-import command.Command;
-import command.DateCommand;
-import command.EndCommand;
-import command.ListCommand;
-import command.MarkCommand;
-import command.UnmarkCommand;
-import command.DeleteCommand;
-import command.AddCommand;
+import tyler.command.Command;
+import tyler.command.DateCommand;
+import tyler.command.EndCommand;
+import tyler.command.ListCommand;
+import tyler.command.MarkCommand;
+import tyler.command.UnmarkCommand;
+import tyler.command.DeleteCommand;
+import tyler.command.AddCommand;
 
 public class Parser {
 

@@ -1,11 +1,11 @@
-package command;
+package tyler.command;
 
-import storage.Storage;
-import task.Deadline;
-import task.Event;
-import task.ToDo;
-import task.list.TaskList;
-import ui.Ui;
+import tyler.storage.Storage;
+import tyler.task.Deadline;
+import tyler.task.Event;
+import tyler.task.ToDo;
+import tyler.task.list.TaskList;
+import tyler.ui.Ui;
 
 public class AddCommand extends Command {
     private final String[] tokens;

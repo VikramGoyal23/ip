@@ -1,13 +1,13 @@
-package main;
+package tyler.main;
 
-import command.Command;
-import parser.Parser;
-import storage.Storage;
-import task.Deadline;
-import task.Event;
-import task.Task;
-import task.list.TaskList;
-import ui.Ui;
+import tyler.command.Command;
+import tyler.parser.Parser;
+import tyler.storage.Storage;
+import tyler.task.Deadline;
+import tyler.task.Event;
+import tyler.task.Task;
+import tyler.task.list.TaskList;
+import tyler.ui.Ui;
 
 import java.io.IOException;
 

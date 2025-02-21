@@ -1,9 +1,9 @@
-package command;
+package tyler.command;
 
-import storage.Storage;
-import task.Task;
-import task.list.TaskList;
-import ui.Ui;
+import tyler.storage.Storage;
+import tyler.task.Task;
+import tyler.task.list.TaskList;
+import tyler.ui.Ui;
 
 public class DeleteCommand extends Command {
     private final String[] tokens;

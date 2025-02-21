@@ -1,6 +1,6 @@
-package ui;
+package tyler.ui;
 
-import task.Task;
+import tyler.task.Task;
 
 import java.util.Scanner;
 

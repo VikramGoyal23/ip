@@ -1,11 +1,11 @@
-package command;
+package tyler.command;
 
-import storage.Storage;
-import task.Deadline;
-import task.Event;
-import task.Task;
-import task.list.TaskList;
-import ui.Ui;
+import tyler.storage.Storage;
+import tyler.task.Deadline;
+import tyler.task.Event;
+import tyler.task.Task;
+import tyler.task.list.TaskList;
+import tyler.ui.Ui;
 
 import java.time.LocalDate;
 

@@ -1,8 +1,8 @@
-package command;
+package tyler.command;
 
-import storage.Storage;
-import task.list.TaskList;
-import ui.Ui;
+import tyler.storage.Storage;
+import tyler.task.list.TaskList;
+import tyler.ui.Ui;
 
 public class MarkCommand extends Command {
     private final String[] tokens;
