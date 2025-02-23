@@ -11,6 +11,7 @@ import tyler.ui.Ui;
 
 import java.io.IOException;
 
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -49,6 +50,8 @@ public class Tyler {
                 System.out.println("\t !!Please provide the correct number of arguments!!");
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("\t !!There aren't this many tasks in the list!!");
+            } catch (DateTimeParseException e) {
+                System.out.println("\t !!Please enter the date in YYYY-MM-DD format!!");
             } finally {
                 ui.showSeparator();
             }

@@ -4,8 +4,8 @@ public class Task {
     //@@author VikramGoyal23-reused
     // Reused from https://nus-cs2103-ay2425s2.github.io/website/se-book-adapted/projectDuke/
 
-    protected String description;
-    protected boolean isDone;
+    private String description;
+    private boolean isDone;
 
     public Task(String description) {
         this.description = description;
