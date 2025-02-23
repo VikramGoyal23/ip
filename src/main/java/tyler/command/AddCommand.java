@@ -7,6 +7,9 @@ import tyler.task.ToDo;
 import tyler.task.list.TaskList;
 import tyler.ui.Ui;
 
+/**
+ * Represents a command to add a new element to the list.
+ */
 public class AddCommand extends Command {
     private final String[] tokens;
 
@@ -16,8 +19,11 @@ public class AddCommand extends Command {
     }
 
     /**
+     * Adds specified task to the list of tasks and returns the modified list.
+     *
      * @param tasks The list of tasks to which the tasks should be added.
      * @param ui The UI object for any required printing.
+     * @param storage The storage for I/O involving storing the tasks on the disk (unused).
      * @return The list with the task added.
      */
     @Override

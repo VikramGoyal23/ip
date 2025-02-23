@@ -1,5 +1,8 @@
 package tyler.task;
 
+/**
+ * Represents a basic Task. Meant to only be inherited from and not instantiated.
+ */
 public class Task {
     //@@author VikramGoyal23-reused
     // Reused from https://nus-cs2103-ay2425s2.github.io/website/se-book-adapted/projectDuke/
@@ -56,6 +59,10 @@ public class Task {
         return description;
     }
 
+    /**
+     * Returns a letter representing the type of task for inherited versions of Task; empty string here.
+     * @return Empty String
+     */
     public String getCategory() {
         return "";
     }

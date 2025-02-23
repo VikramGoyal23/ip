@@ -9,6 +9,9 @@ import tyler.ui.Ui;
 
 import java.time.LocalDate;
 
+/**
+ * Represents a command to print the tasks occurring on a specific date.
+ */
 public class DateCommand extends Command {
     private final String[] tokens;
 
@@ -18,8 +21,11 @@ public class DateCommand extends Command {
     }
 
     /**
+     * Shows the tasks which happen on the specified date.
+     *
      * @param tasks The list of tasks to check for matching dates.
      * @param ui The UI object for any required printing.
+     * @param storage The storage for I/O involving storing the tasks on the disk (unused).
      * @return The unmodified list.
      */
     @Override
