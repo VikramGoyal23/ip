@@ -52,6 +52,10 @@ public class Ui {
         System.out.println("\t " + "Old tasks could not be loaded.\n" + SEPARATOR);
     }
 
+    public void showFindCommandHeader() {
+        System.out.println("\t " + "Here are the matching tasks in your list:" );
+    }
+
     public String readCommand() {
         return sc.nextLine();
     }

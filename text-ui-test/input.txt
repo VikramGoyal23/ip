@@ -3,6 +3,7 @@ list
 deadline return book /by 2019-12-02
 event project meeting /from 2019-12-02 09:00 /to 2019-12-03
 list
+find book
 todo
 event doh /from
 deadline meh
