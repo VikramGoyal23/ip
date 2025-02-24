@@ -1,5 +1,12 @@
 package tyler.main;
 
+import java.io.IOException;
+
+import java.time.format.DateTimeParseException;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import tyler.command.Command;
 import tyler.parser.Parser;
 import tyler.storage.Storage;
@@ -8,12 +15,6 @@ import tyler.task.Event;
 import tyler.task.Task;
 import tyler.task.list.TaskList;
 import tyler.ui.Ui;
-
-import java.io.IOException;
-
-import java.time.format.DateTimeParseException;
-import java.util.List;
-import java.util.ArrayList;
 
 public class Tyler {
 

@@ -1,8 +1,8 @@
 package tyler.ui;
 
-import tyler.task.Task;
-
 import java.util.Scanner;
+
+import tyler.task.Task;
 
 public class Ui {
     private static final String LOGO = "  _____      _           \n"
@@ -17,7 +17,7 @@ public class Ui {
             + "\t" + " What can I do for you?\n";
     private static final String FAREWELL = "\t" + " Bye-bye now!\n";
 
-    private Scanner sc = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public Ui() {
     }
@@ -45,14 +45,14 @@ public class Ui {
 
     public void showFarewell() {
         System.out.print(FAREWELL);
-        sc.close();
+        scanner.close();
     }
 
     public void showLoadingError() {
-        System.out.println("\t " + "Old tasks could not be loaded.\n" + SEPARATOR);
+        System.out.println("\t " + "!!Old tasks could not be loaded!!\n" + SEPARATOR);
     }
 
     public String readCommand() {
-        return sc.nextLine();
+        return scanner.nextLine();
     }
 }

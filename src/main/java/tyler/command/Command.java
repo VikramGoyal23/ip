@@ -5,14 +5,14 @@ import tyler.task.list.TaskList;
 import tyler.ui.Ui;
 
 public abstract class Command {
-    private final boolean exit;
+    private final boolean isExit;
 
     protected Command() {
-        this.exit = false;
+        this.isExit = false;
     }
 
-    protected Command(boolean exit) {
-        this.exit = exit;
+    protected Command(boolean isExit) {
+        this.isExit = isExit;
     }
 
     /**
@@ -23,6 +23,6 @@ public abstract class Command {
     public abstract TaskList execute(TaskList tasks, Ui ui, Storage storage);
 
     public boolean isExit() {
-        return exit;
+        return isExit;
     }
 }

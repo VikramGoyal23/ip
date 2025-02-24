@@ -1,8 +1,8 @@
 package tyler.task.list;
 
-import tyler.task.Task;
-
 import java.util.ArrayList;
+
+import tyler.task.Task;
 
 public class TaskList extends ArrayList<Task> {
     private ArrayList<Task> tasks;

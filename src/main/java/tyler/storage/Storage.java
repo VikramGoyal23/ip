@@ -1,17 +1,19 @@
 package tyler.storage;
 
-import tyler.task.Deadline;
-import tyler.task.Event;
-import tyler.task.ToDo;
-import tyler.task.list.TaskList;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.time.LocalDateTime;
+
 import java.util.Arrays;
 import java.util.List;
+
+import tyler.task.Deadline;
+import tyler.task.Event;
+import tyler.task.ToDo;
+import tyler.task.list.TaskList;
 
 public class Storage {
     private final String home = System.getProperty("user.dir");
