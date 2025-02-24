@@ -77,7 +77,7 @@ public class Ui {
     }
 
     public void showFindCommandHeader() {
-        System.out.println("\t " + "Here are the matching tasks in your list:" );
+        System.out.println("\t " + "Here are the matching tasks in your list:");
     }
 
     /**

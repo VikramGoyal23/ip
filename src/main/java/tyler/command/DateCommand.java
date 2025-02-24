@@ -9,8 +9,6 @@ import tyler.task.Task;
 import tyler.task.list.TaskList;
 import tyler.ui.Ui;
 
-import java.time.LocalDate;
-
 /**
  * Represents a command to print the tasks occurring on a specific date.
  */
