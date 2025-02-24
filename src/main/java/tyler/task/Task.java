@@ -26,8 +26,8 @@ public class Task {
 
     //@@author
 
-    void setDone(boolean done) {
-        isDone = done;
+    private void setDone(boolean isDone) {
+        this.isDone = isDone;
     }
 
     /**

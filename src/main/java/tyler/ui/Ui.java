@@ -1,8 +1,8 @@
 package tyler.ui;
 
-import tyler.task.Task;
-
 import java.util.Scanner;
+
+import tyler.task.Task;
 
 /**
  * Handles user interactions in the application.
@@ -20,7 +20,7 @@ public class Ui {
             + "\t" + " What can I do for you?\n";
     private static final String FAREWELL = "\t" + " Bye-bye now!\n";
 
-    private Scanner sc = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public Ui() {
     }
@@ -66,14 +66,14 @@ public class Ui {
      */
     public void showFarewell() {
         System.out.print(FAREWELL);
-        sc.close();
+        scanner.close();
     }
 
     /**
      * Displays an error message when the file containing the tasks cannot be loaded.
      */
     public void showLoadingError() {
-        System.out.println("\t " + "Old tasks could not be loaded\n" + SEPARATOR);
+        System.out.println("\t " + "!!Old tasks could not be loaded!!\n" + SEPARATOR);
     }
 
     /**
@@ -82,6 +82,6 @@ public class Ui {
      * @return The user input as a string.
      */
     public String readCommand() {
-        return sc.nextLine();
+        return scanner.nextLine();
     }
 }
