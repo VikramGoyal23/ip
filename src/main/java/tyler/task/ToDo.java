@@ -16,7 +16,9 @@ public class ToDo extends Task {
 
     @Override
     public boolean equals(Object o) {
-        ToDo t = (ToDo) o;
+        if (!(o instanceof ToDo t)) {
+            return false;
+        }
         return this.getCategory().equals(t.getCategory()) && this.getDescription().equals(t.getDescription());
     }
 

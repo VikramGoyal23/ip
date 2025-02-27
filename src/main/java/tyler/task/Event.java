@@ -59,7 +59,9 @@ public class Event extends Task {
 
     @Override
     public boolean equals(Object o) {
-        Event e = (Event) o;
+        if (!(o instanceof Event e)) {
+            return false;
+        }
         return this.getCategory().equals(e.getCategory()) && this.getDescription().equals(e.getDescription())
                 && this.getFrom().equals(e.getFrom()) && this.getTo().equals(e.getTo());
     }
