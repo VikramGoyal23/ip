@@ -1,12 +1,6 @@
 # Tyler User Guide
 
-// Update the title above to match the actual product name
-
-// Product screenshot goes here
-
 ![Screenshot of Tyler in action](Ui.png)
-
-// Product intro goes here
 
 Welcome to Tyler, the most musical way to keep track of your tasks! 
 This is a bot designed to take a load off your mind and have your 
@@ -14,15 +8,9 @@ tasks be organized **for you** instead of **by you**!
 
 ## Adding To-dos
 
-// Describe the action and its outcome.
-
 You can add to-do tasks with no time restriction!
 
-// Give examples of usage
-
 Example: `todo borrow book`
-
-// A description of the expected outcome goes here
 
 Tyler will confirm that your to-do task has been added!
 
@@ -34,15 +22,9 @@ I've added:
 
 ## Adding deadlines
 
-// Describe the action and its outcome.
-
 You can add deadlines with a done-by time!
 
-// Give examples of usage
-
 Example: `deadline return book /by 2019-12-02`
-
-// A description of the expected outcome goes here
 
 Tyler will confirm that your deadline has been added!
 
@@ -53,15 +35,9 @@ I've added:
 
 ## Adding events
 
-// Describe the action and its outcome.
-
 You can add event with from and to times!
 
-// Give examples of usage
-
 Example: `event project meeting /from 2019-12-02 09:00 /to 2019-12-03`
-
-// A description of the expected outcome goes here
 
 Tyler will confirm that your event has been added!
 
@@ -95,15 +71,9 @@ Output:
 
 ## Delete Tasks
 
-// Describe the action and its outcome.
-
 You can remove tasks!
 
-// Give examples of usage
-
 Example: `delete 3`
-
-// A description of the expected outcome goes here
 
 Tyler will confirm that your task has been deleted!
 
@@ -114,15 +84,9 @@ I've removed this task:
 
 ## Mark and unmark tasks
 
-// Describe the action and its outcome.
-
 You can mark tasks as complete or mark them as incomplete!
 
-// Give examples of usage
-
 Example: `mark 2`
-
-// A description of the expected outcome goes here
 
 Tyler will confirm that your task has been marked!
 
@@ -132,8 +96,6 @@ I've marked this task as done:
 ```
 
 Example: `unmark 2`
-
-// A description of the expected outcome goes here
 
 Tyler will confirm that your task has been unmarked!
 
