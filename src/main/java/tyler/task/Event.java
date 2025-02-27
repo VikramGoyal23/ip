@@ -58,6 +58,13 @@ public class Event extends Task {
     }
 
     @Override
+    public boolean equals(Object o) {
+        Event e = (Event) o;
+        return this.getCategory().equals(e.getCategory()) && this.getDescription().equals(e.getDescription())
+                && this.getFrom().equals(e.getFrom()) && this.getTo().equals(e.getTo());
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " (from: "
                 + from.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))
