@@ -30,6 +30,7 @@ public class DeleteCommand extends Command {
         Task deletedTask = null;
         try {
             index = Integer.parseInt(tokens[1]) - 1;
+            assert index >= 0 && index < tasks.size();
             deletedTask = tasks.remove(index);
             ui.showMessage("\t I've removed this task: \n" + "\t " + deletedTask
                     + "\t There are " + tasks.size() + " tasks in the list.");
