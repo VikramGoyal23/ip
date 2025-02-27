@@ -31,40 +31,51 @@ public class Tyler {
         }
     }
 
+    public Tyler() {
+        ui = new Ui();
+        storage = new Storage();
+        try {
+            tasks = new TaskList(storage.load());
+        } catch (IOException e) {
+            ui.showLoadingError();
+            tasks = new TaskList();
+        }
+    }
+
     public void run() {
         ui.showGreeting();
         boolean isExit = false;
         while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                ui.showSeparator();
-                Command c = Parser.parse(fullCommand);
-                c.execute(tasks, ui, storage);
-                isExit = c.isExit();
-            } catch (NumberFormatException e) {
-                System.out.println("\t !!Please enter a number as the argument!!");
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("\t !!Please provide the correct number of arguments!!");
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("\t !!There aren't this many tasks in the list!!");
-            } catch (DateTimeParseException e) {
-                System.out.println("\t !!Please enter the date in YYYY-MM-DD format!!");
-            } finally {
-                ui.showSeparator();
-            }
+            String fullCommand = ui.readCommand();
+            Command c = Parser.parse(fullCommand);
+            c.execute(tasks, ui, storage);
+            isExit = c.isExit();
         }
         List<String> formattedTasks = getFormattedTasks(tasks);
         try {
             storage.save(formattedTasks);
         } catch (IOException e) {
-            System.out.println("\t !!Unable to save tasks!!");
+            ui.showMessage("\t !!Unable to save tasks!!");
         }
     }
 
-    public static void main(String[] args) {
-        new Tyler("data/tyler.txt").run();
+    public String getResponse(String input) {
+        Command c = Parser.parse(input);
+        c.execute(tasks, ui, storage);
+        return ui.getMessage();
+    }
+
+//    public static void main(String[] args) {
+//        new Tyler("data/tyler.txt").run();
+//    }
+
+    public void saveTasks() {
+        List<String> formattedTasks = getFormattedTasks(tasks);
+        try {
+            storage.save(formattedTasks);
+        } catch (IOException e) {
+            ui.showMessage("\t !!Unable to save tasks!!");
+        }
     }
 
     private static List<String> getFormattedTasks(ArrayList<Task> tasks) {

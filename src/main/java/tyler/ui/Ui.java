@@ -20,6 +20,8 @@ public class Ui {
             + "\t" + " What can I do for you?\n";
     private static final String FAREWELL = "\t" + " Bye-bye now!\n";
 
+    private String message;
+
     private Scanner scanner = new Scanner(System.in);
 
     public Ui() {
@@ -29,43 +31,57 @@ public class Ui {
      * Displays the greeting when the application starts.
      */
     public void showGreeting() {
-        System.out.println("Hello from\n" + LOGO);
-        System.out.print(SEPARATOR + GREETING + SEPARATOR);
+        this.message = ("Hello from\n" + LOGO + "\n"
+                + SEPARATOR + GREETING + SEPARATOR);
     }
 
-    /**
-     * Displays the line separator.
-     */
-    public void showSeparator() {
-        System.out.print(SEPARATOR);
-    }
+//    /**
+//     * Displays the line separator.
+//     */
+//    public void showSeparator() {
+//        System.out.print(SEPARATOR);
+//    }
 
     /**
      * Displays a deleted task.
      */
     public void showDeletedTask(Task deletedTask) {
-        System.out.println("\t I've removed this task: \n" + "\t " + deletedTask);
+        this.message =  "\t I've removed this task: \n" + "\t " + deletedTask;
     }
 
     /**
      * Displays the size of a list of tasks.
      */
     public void showTasksLength(int size) {
-        System.out.println("\t There are " + size + " tasks left in the list.");
+        this.message = "\t There are " + size + " tasks in the list.";
     }
 
     /**
      * Displays a task with its details.
      */
-    public void showTask(int index, Task task) {
-        System.out.println("\t " + index + ". " + task);
+    public void showListTask(int index, Task task) {
+        this.message = "\t " + index + ". " + task;
+    }
+
+    /**
+     * Displays a task with its details.
+     */
+    public void showTaskWithTab(Task task) {
+        this.message = "\t\t" + task;
+    }
+
+    /**
+     * Displays an added task with its details.
+     */
+    public void showAddedTask(Task task) {
+        this.message = "\t I've added: \n\t\t" + task;
     }
 
     /**
      * Displays the farewell message when the program ends and closes the scanner.
      */
     public void showFarewell() {
-        System.out.print(FAREWELL);
+        this.message = FAREWELL;
         scanner.close();
     }
 
@@ -73,11 +89,20 @@ public class Ui {
      * Displays an error message when the file containing the tasks cannot be loaded.
      */
     public void showLoadingError() {
-        System.out.println("\t " + "!!Old tasks could not be loaded!!\n" + SEPARATOR);
+        this.message = "\t " + "!!Old tasks could not be loaded!!\n" + SEPARATOR;
     }
 
     public void showFindCommandHeader() {
-        System.out.println("\t " + "Here are the matching tasks in your list:");
+        this.message = "\t " + "Here are the matching tasks in your list:\n";
+    }
+
+    /**
+     * Displays a message to the user.
+     *
+     * @param message The message to be shown.
+     */
+    public void showMessage(String message) {
+        this.message = message;
     }
 
     /**
@@ -88,4 +113,14 @@ public class Ui {
     public String readCommand() {
         return scanner.nextLine();
     }
+
+    /**
+     * Returns the UI message.
+     *
+     * @return The current message of the UI.
+     */
+    public String getMessage() {
+        return this.message;
+    }
+
 }
