@@ -15,6 +15,12 @@ public class ToDo extends Task {
     }
 
     @Override
+    public boolean equals(Object o) {
+        ToDo t = (ToDo) o;
+        return this.getCategory().equals(t.getCategory()) && this.getDescription().equals(t.getDescription());
+    }
+
+    @Override
     public String toString() {
         return super.toString();
     }

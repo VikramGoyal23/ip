@@ -42,6 +42,13 @@ public class Deadline extends Task {
     }
 
     @Override
+    public boolean equals(Object o) {
+        Deadline d = (Deadline) o;
+        return this.getCategory().equals(d.getCategory()) && this.getDescription().equals(d.getDescription())
+                && this.getBy().equals(d.getBy());
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " (by: "
                 + by.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))

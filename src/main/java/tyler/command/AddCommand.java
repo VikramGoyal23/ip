@@ -3,6 +3,7 @@ package tyler.command;
 import tyler.storage.Storage;
 import tyler.task.Deadline;
 import tyler.task.Event;
+import tyler.task.Task;
 import tyler.task.ToDo;
 import tyler.task.list.TaskList;
 import tyler.ui.Ui;
@@ -32,7 +33,18 @@ public class AddCommand extends Command {
             if (tokens[0].equalsIgnoreCase("todo")) {
                 ToDo toDo = new ToDo(tokens[1]);
                 assert toDo.getCategory().equals("T");
-                tasks.addToList(toDo, ui);
+                boolean noDuplicates = true;
+                for (Task t: tasks) {
+                    if (toDo.equals(t)){
+                        noDuplicates = false;
+                        break;
+                    }
+                }
+                if (noDuplicates) {
+                    tasks.addToList(toDo, ui);
+                } else {
+                    ui.showMessage("\t !!This task already exists!!");
+                }
             } else if (tokens[0].equalsIgnoreCase("deadline")) {
                 if (!tokens[1].contains("/by") || tokens[1].split("/by ")[1].isBlank()) {
                     throw new IllegalArgumentException("\t !!Deadline must include a 'by' time!!");
@@ -40,7 +52,18 @@ public class AddCommand extends Command {
                 Deadline deadline = new Deadline(
                         tokens[1].split(" /by")[0], tokens[1].split("/by ")[1]);
                 assert deadline.getCategory().equals("D");
-                tasks.addToList(deadline, ui);
+                boolean noDuplicates = true;
+                for (Task d: tasks) {
+                    if (deadline.equals(d)){
+                        noDuplicates = false;
+                        break;
+                    }
+                }
+                if (noDuplicates) {
+                    tasks.addToList(deadline, ui);
+                } else {
+                    ui.showMessage("\t !!This task already exists!!");
+                }
             } else if (tokens[0].equalsIgnoreCase("event")) {
                 if (!tokens[1].contains("/from") || !tokens[1].contains("/to")
                         || tokens[1].split("/from ")[1].split(" /to")[0].isBlank()
@@ -53,7 +76,18 @@ public class AddCommand extends Command {
                         tokens[1].split("/from ")[1].split(" /to")[0],
                         tokens[1].split("/to ")[1]);
                 assert event.getCategory().equals("E");
-                tasks.addToList(event, ui);
+                boolean noDuplicates = true;
+                for (Task e: tasks) {
+                    if (event.equals(e)){
+                        noDuplicates = false;
+                        break;
+                    }
+                }
+                if (noDuplicates) {
+                    tasks.addToList(event, ui);
+                } else {
+                    ui.showMessage("\t !!This task already exists!!");
+                }
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             ui.showMessage("\t !!Please provide the correct number of arguments!!");
