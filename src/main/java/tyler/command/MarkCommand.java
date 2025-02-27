@@ -28,6 +28,7 @@ public class MarkCommand extends Command {
         int index;
         try {
             index = Integer.parseInt(tokens[1]) - 1;
+            assert index >= 0 && index < tasks.size();
             tasks.get(index).markAsDone(ui);
         } catch (NumberFormatException e) {
             ui.showMessage("\t !!Please enter a number as the argument!!");
