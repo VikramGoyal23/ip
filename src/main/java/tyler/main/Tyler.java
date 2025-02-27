@@ -1,7 +1,6 @@
 package tyler.main;
 
 import java.io.IOException;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,32 +41,11 @@ public class Tyler {
         }
     }
 
-    public void run() {
-        ui.showGreeting();
-        boolean isExit = false;
-        while (!isExit) {
-            String fullCommand = ui.readCommand();
-            Command c = Parser.parse(fullCommand);
-            c.execute(tasks, ui, storage);
-            isExit = c.isExit();
-        }
-        List<String> formattedTasks = getFormattedTasks(tasks);
-        try {
-            storage.save(formattedTasks);
-        } catch (IOException e) {
-            ui.showMessage("\t !!Unable to save tasks!!");
-        }
-    }
-
     public String getResponse(String input) {
         Command c = Parser.parse(input);
         c.execute(tasks, ui, storage);
         return ui.getMessage();
     }
-
-//    public static void main(String[] args) {
-//        new Tyler("data/tyler.txt").run();
-//    }
 
     public void saveTasks() {
         List<String> formattedTasks = getFormattedTasks(tasks);
