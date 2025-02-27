@@ -7,7 +7,7 @@ import tyler.ui.Ui;
 /**
  * Represents a command for when the user makes an unknown input.
  */
-public class UnknownCommand extends Command{
+public class UnknownCommand extends Command {
 
     /**
      * Represents an action to perform on the list of tasks and then returns the list.
