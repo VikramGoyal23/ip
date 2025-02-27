@@ -22,9 +22,11 @@ public class ListCommand extends Command {
      */
     @Override
     public TaskList execute(TaskList tasks, Ui ui, Storage storage) {
+        StringBuilder message = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
-            ui.showTask(i + 1, tasks.get(i));
+            message.append("\t ").append(i + 1).append(". ").append(tasks.get(i)).append("\n");
         }
+        ui.showMessage(message.toString());
         return tasks;
     }
 }

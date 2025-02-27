@@ -3,6 +3,7 @@ package tyler.task.list;
 import java.util.ArrayList;
 
 import tyler.task.Task;
+import tyler.ui.Ui;
 
 public class TaskList extends ArrayList<Task> {
     private ArrayList<Task> tasks;
@@ -21,14 +22,17 @@ public class TaskList extends ArrayList<Task> {
      *
      * @param task Task to be added.
      *
-     * @throws IllegalArgumentException If task description is blank.
      */
-    public void addToList(Task task) throws IllegalArgumentException {
-        if (task.getDescription().isBlank()) {
-            throw new IllegalArgumentException("\t !!Please add a description for the task!!");
+    public void addToList(Task task, Ui ui) {
+        try {
+            if (task.getDescription().isBlank()) {
+                throw new IllegalArgumentException("\t !!Please add a description for the task!!");
+            }
+            this.add(task);
+            ui.showMessage("\t I've added: \n\t\t" + task + "\n"
+                    + "\t There's now " + this.size() + " task(s) in the list.");
+        } catch (IllegalArgumentException e) {
+            ui.showMessage("\t !!Please add a description for the task!!");
         }
-        this.add(task);
-        System.out.println("\t I've added: \n\t\t" + task);
-        System.out.println("\t There's now " + this.size() + " task(s) in the list.");
     }
 }

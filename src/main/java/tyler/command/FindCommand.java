@@ -27,13 +27,19 @@ public class FindCommand extends Command {
     @Override
     public TaskList execute(TaskList tasks, Ui ui, Storage storage) {
         int i = 1;
-        String keyword = tokens[1];
-        ui.showFindCommandHeader();
-        for (Task t : tasks) {
-            if (t.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
-                ui.showTask(i, t);
-                i++;
+        try {
+            String keyword = tokens[1];
+            StringBuilder message = new StringBuilder();
+            message.append("\t ").append("Here are the matching tasks in your list:\n");
+            for (Task t : tasks) {
+                if (t.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
+                    message.append("\t ").append(i).append(". ").append(t).append("\n");
+                    i++;
+                }
             }
+            ui.showMessage(message.toString());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ui.showMessage("\t !!Please provide the correct number of arguments!!");
         }
         return tasks;
     }

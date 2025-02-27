@@ -8,6 +8,7 @@ import tyler.command.EndCommand;
 import tyler.command.FindCommand;
 import tyler.command.ListCommand;
 import tyler.command.MarkCommand;
+import tyler.command.UnknownCommand;
 import tyler.command.UnmarkCommand;
 
 public class Parser {
@@ -24,7 +25,7 @@ public class Parser {
             case "find" -> new FindCommand(tokens);
             case "delete" -> new DeleteCommand(tokens);
             case "todo", "deadline", "event" -> new AddCommand(tokens);
-            default -> throw new IllegalArgumentException("\t !!I'm sorry, I don't know what that means!!");
+            default -> new UnknownCommand();
         };
     }
 }

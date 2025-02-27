@@ -25,7 +25,15 @@ public class UnmarkCommand extends Command {
      */
     @Override
     public TaskList execute(TaskList tasks, Ui ui, Storage storage) {
-        tasks.get(Integer.parseInt(tokens[1]) - 1).markAsUndone();
+        int index;
+        try {
+            index = Integer.parseInt(tokens[1]) - 1;
+            tasks.get(index).markAsUndone(ui);
+        } catch (NumberFormatException e) {
+            ui.showMessage("\t !!Please enter a number as the argument!!");
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("\t !!There aren't this many tasks in the list!!");
+        }
         return tasks;
     }
 }

@@ -26,9 +26,20 @@ public class DeleteCommand extends Command {
      */
     @Override
     public TaskList execute(TaskList tasks, Ui ui, Storage storage) {
-        Task deletedTask = tasks.remove(Integer.parseInt(tokens[1]) - 1);
-        ui.showDeletedTask(deletedTask);
-        ui.showTasksLength(tasks.size());
+        int index;
+        Task deletedTask = null;
+        try {
+            index = Integer.parseInt(tokens[1]) - 1;
+            deletedTask = tasks.remove(index);
+            ui.showMessage("\t I've removed this task: \n" + "\t " + deletedTask
+                    + "\t There are " + tasks.size() + " tasks in the list.");
+        } catch (NumberFormatException e) {
+            ui.showMessage("\t !!Please enter a number as the argument!!");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ui.showMessage("\t !!Please provide the correct number of arguments!!");
+        } catch (IndexOutOfBoundsException e) {
+            ui.showMessage("\t !!There aren't this many tasks in the list!!");
+        }
         return tasks;
     }
 }

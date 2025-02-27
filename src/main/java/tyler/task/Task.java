@@ -1,5 +1,7 @@
 package tyler.task;
 
+import tyler.ui.Ui;
+
 /**
  * Represents a basic Task. Meant to only be inherited from and not instantiated.
  */
@@ -36,8 +38,6 @@ public class Task {
      */
     public void markAsDone() {
         setDone(true);
-        System.out.println("\t " + "I've marked this task as done: ");
-        System.out.println("\t\t" + this);
     }
 
     /**
@@ -46,8 +46,28 @@ public class Task {
      */
     public void markAsUndone() {
         setDone(false);
-        System.out.println("\t " + "I've marked this task as incomplete: ");
-        System.out.println("\t\t" + this);
+    }
+
+    /**
+     * Sets the completion status of the task as complete.
+     *
+     * @param ui the UI object to display the marking.
+     */
+    public void markAsDone(Ui ui) {
+        setDone(true);
+        ui.showMessage("\t " + "I've marked this task as done: " + "\n"
+                + "\t\t" + this);
+    }
+
+    /**
+     * Sets the completion status of the task as incomplete.
+     *
+     * @param ui the UI object to display the marking.
+     */
+    public void markAsUndone(Ui ui) {
+        setDone(false);
+        ui.showMessage("\t " + "I've marked this task as incomplete: " + "\n"
+                + "\t\t" + this);
     }
 
     /**
