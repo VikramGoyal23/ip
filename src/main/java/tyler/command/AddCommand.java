@@ -31,6 +31,7 @@ public class AddCommand extends Command {
         try {
             if (tokens[0].equalsIgnoreCase("todo")) {
                 ToDo toDo = new ToDo(tokens[1]);
+                assert toDo.getCategory().equals("T");
                 tasks.addToList(toDo, ui);
             } else if (tokens[0].equalsIgnoreCase("deadline")) {
                 if (!tokens[1].contains("/by") || tokens[1].split("/by ")[1].isBlank()) {
@@ -38,6 +39,7 @@ public class AddCommand extends Command {
                 }
                 Deadline deadline = new Deadline(
                         tokens[1].split(" /by")[0], tokens[1].split("/by ")[1]);
+                assert deadline.getCategory().equals("D");
                 tasks.addToList(deadline, ui);
             } else if (tokens[0].equalsIgnoreCase("event")) {
                 if (!tokens[1].contains("/from") || !tokens[1].contains("/to")
@@ -50,6 +52,7 @@ public class AddCommand extends Command {
                 Event event = new Event(tokens[1].split(" /from")[0],
                         tokens[1].split("/from ")[1].split(" /to")[0],
                         tokens[1].split("/to ")[1]);
+                assert event.getCategory().equals("E");
                 tasks.addToList(event, ui);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
