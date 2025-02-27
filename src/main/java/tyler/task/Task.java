@@ -41,14 +41,6 @@ public class Task {
     }
 
     /**
-     * Sets the completion status of the task as incomplete.
-     *
-     */
-    public void markAsUndone() {
-        setDone(false);
-    }
-
-    /**
      * Sets the completion status of the task as complete.
      *
      * @param ui the UI object to display the marking.
@@ -57,6 +49,14 @@ public class Task {
         setDone(true);
         ui.showMessage("\t " + "I've marked this task as done: " + "\n"
                 + "\t\t" + this);
+    }
+
+    /**
+     * Sets the completion status of the task as incomplete.
+     *
+     */
+    public void markAsUndone() {
+        setDone(false);
     }
 
     /**
