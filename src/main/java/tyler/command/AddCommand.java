@@ -1,5 +1,7 @@
 package tyler.command;
 
+import java.time.format.DateTimeParseException;
+
 import tyler.storage.Storage;
 import tyler.task.Deadline;
 import tyler.task.Event;
@@ -93,6 +95,8 @@ public class AddCommand extends Command {
             ui.showMessage("\t !!Please provide the correct number of arguments!!");
         } catch (IllegalArgumentException e) {
             ui.showMessage(e.getMessage());
+        } catch (DateTimeParseException e) {
+            ui.showMessage("\t !!Please enter the date in YYYY-MM-DD format!!");
         }
         return tasks;
     }

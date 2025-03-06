@@ -34,28 +34,28 @@ public class DateCommand extends Command {
         LocalDate date = null;
         try {
             date = LocalDate.parse(tokens[1]);
+            int i = 1;
+            StringBuilder message = new StringBuilder();
+            for (Task t : tasks) {
+                if (t.getCategory().equals("D")) {
+                    if (((Deadline) t).getBy().toLocalDate().equals(date)) {
+                        message.append("\t ").append(i).append(". ").append(t).append("\n");
+                        i++;
+                    }
+                } else if (t.getCategory().equals("E")) {
+                    if (((Event) t).getFrom().toLocalDate().equals(date)
+                            || ((Event) t).getTo().toLocalDate().equals(date)) {
+                        message.append("\t ").append(i).append(". ").append(t).append("\n");
+                        i++;
+                    }
+                }
+            }
+            ui.showMessage(message.toString());
         } catch (DateTimeParseException e) {
             ui.showMessage("\t !!Please enter the date in YYYY-MM-DD format!!");
         } catch (ArrayIndexOutOfBoundsException e) {
             ui.showMessage("\t !!Please provide the correct number of arguments!!");
         }
-        int i = 1;
-        StringBuilder message = new StringBuilder();
-        for (Task t : tasks) {
-            if (t.getCategory().equals("D")) {
-                if (((Deadline) t).getBy().toLocalDate().equals(date)) {
-                    message.append("\t ").append(i).append(". ").append(t).append("\n");
-                    i++;
-                }
-            } else if (t.getCategory().equals("E")) {
-                if (((Event) t).getFrom().toLocalDate().equals(date)
-                        || ((Event) t).getTo().toLocalDate().equals(date)) {
-                    message.append("\t ").append(i).append(". ").append(t).append("\n");
-                    i++;
-                }
-            }
-        }
-        ui.showMessage(message.toString());
         return tasks;
     }
 }
