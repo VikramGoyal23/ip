@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * A GUI for Duke using FXML.
+ * A GUI for Tyler using FXML.
  */
 public class Main extends Application {
 
@@ -22,7 +22,8 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setTyler(tyler); // inject the Duke instance
+            stage.setTitle("Tyler");
+            fxmlLoader.<MainWindow>getController().setTyler(tyler); // inject the Tyler instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

@@ -35,4 +35,13 @@ public class TaskList extends ArrayList<Task> {
             ui.showMessage("\t !!Please add a description for the task!!");
         }
     }
+
+    public boolean isDuplicate(Task task) {
+        for (Task t : this) {
+            if (task.equals(t)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

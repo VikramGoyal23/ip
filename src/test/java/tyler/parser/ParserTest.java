@@ -4,13 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 import org.junit.jupiter.api.Test;
 
-import tyler.command.AddCommand;
 import tyler.command.Command;
 import tyler.command.DateCommand;
+import tyler.command.DeadlineCommand;
 import tyler.command.DeleteCommand;
 import tyler.command.EndCommand;
+import tyler.command.EventCommand;
 import tyler.command.ListCommand;
 import tyler.command.MarkCommand;
+import tyler.command.ToDoCommand;
 import tyler.command.UnmarkCommand;
 
 
@@ -19,13 +21,13 @@ public class ParserTest {
     @Test
     void testParseCommandValid() {
         Command command = Parser.parse("todo read book");
-        assertInstanceOf(AddCommand.class, command);
+        assertInstanceOf(ToDoCommand.class, command);
 
         command = Parser.parse("deadline return book /by 31/1/2025 2359");
-        assertInstanceOf(AddCommand.class, command);
+        assertInstanceOf(DeadlineCommand.class, command);
 
         command = Parser.parse("event meeting /from 24/1/2025 1400 /to 24/1/2025 1600");
-        assertInstanceOf(AddCommand.class, command);
+        assertInstanceOf(EventCommand.class, command);
 
         command = Parser.parse("mark 5");
         assertInstanceOf(MarkCommand.class, command);

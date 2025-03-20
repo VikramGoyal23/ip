@@ -1,13 +1,15 @@
 package tyler.parser;
 
-import tyler.command.AddCommand;
 import tyler.command.Command;
 import tyler.command.DateCommand;
+import tyler.command.DeadlineCommand;
 import tyler.command.DeleteCommand;
 import tyler.command.EndCommand;
+import tyler.command.EventCommand;
 import tyler.command.FindCommand;
 import tyler.command.ListCommand;
 import tyler.command.MarkCommand;
+import tyler.command.ToDoCommand;
 import tyler.command.UnknownCommand;
 import tyler.command.UnmarkCommand;
 
@@ -24,7 +26,9 @@ public class Parser {
             case "unmark" -> new UnmarkCommand(tokens);
             case "find" -> new FindCommand(tokens);
             case "delete" -> new DeleteCommand(tokens);
-            case "todo", "deadline", "event" -> new AddCommand(tokens);
+            case "todo" -> new ToDoCommand(tokens);
+            case "deadline" -> new DeadlineCommand(tokens);
+            case "event" -> new EventCommand(tokens);
             default -> new UnknownCommand();
         };
     }
